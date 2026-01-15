@@ -1,6 +1,6 @@
 # Ofir Maoz — Portfolio
 
-Personal portfolio and dev showcase. Built with vanilla HTML, CSS, and JavaScript on a Bootstrap foundation.
+Personal portfolio and engineering showcase. Built with HTML, CSS, and JavaScript — covers DevOps infrastructure, cloud architecture, security engineering, and full-stack development work.
 
 ## Live Site
 
@@ -8,24 +8,18 @@ Personal portfolio and dev showcase. Built with vanilla HTML, CSS, and JavaScrip
 
 ## Stack
 
-- HTML5 / CSS3
-- Bootstrap 5
-- Vanilla JavaScript
-- Font Awesome icons
-- Google Fonts (Nunito, Varela Round)
-- Anime.js (animations)
+- Vanilla HTML5, CSS3, JavaScript
+- Bootstrap layout foundation
+- GitHub Pages hosting
 
-## Contents
+## Featured Projects
 
-- About section
-- Project showcase
-- CV download (PDF)
-- Social links
+- **career-ops** — AI-powered job search pipeline built on Claude Code
+- **worldmonitor** — Real-time global intelligence dashboard
+- **CKAD-2026** — Kubernetes application developer exam simulator
+- **shannon** — Autonomous web application security testing agent
+- **wikimedia-analytics** — End-to-end real-time data streaming platform
 
-## Local Dev
+## Contact
 
-No build step — open `index.html` directly in a browser or serve with any static file server:
-
-```bash
-npx serve .
-```
+[GitHub](https://github.com/Rekt-Dev) · [LinkedIn](https://linkedin.com/in/ofir-maoz)
