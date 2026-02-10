@@ -8,22 +8,393 @@
         <title>Ofir Maoz · Kubernetes &amp; Cloud Security Engineer</title>
         <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            :root {
+                --accent: #00d4ff;
+                --accent2: #7b2fff;
+                --accent3: #00ff9d;
+                --card-bg: rgba(255,255,255,0.03);
+                --card-border: rgba(255,255,255,0.08);
+            }
+
+            body { font-family: 'Inter', sans-serif; }
+
+            /* ── NAV ── */
+            #mainNav {
+                background: rgba(10,10,15,0.85) !important;
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                padding: 1rem 0;
+                transition: all 0.3s ease;
+            }
+            #mainNav .navbar-brand {
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 600;
+                font-size: 1.1rem;
+                background: linear-gradient(135deg, var(--accent), var(--accent2));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                letter-spacing: 0.05em;
+            }
+            #mainNav .nav-link {
+                font-size: 0.82rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,0.6) !important;
+                transition: color 0.2s;
+                padding: 0.5rem 1rem !important;
+            }
+            #mainNav .nav-link:hover { color: var(--accent) !important; }
+
+            /* ── HERO ── */
+            .masthead {
+                background: linear-gradient(160deg, #06060f 0%, #0d0d1a 50%, #060610 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            .masthead::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0,212,255,0.07) 0%, transparent 60%),
+                    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(123,47,255,0.07) 0%, transparent 60%);
+            }
+            .masthead .container { position: relative; z-index: 1; }
+            .masthead h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 900;
+                letter-spacing: -0.02em;
+                background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-transform: none !important;
+                line-height: 1.1;
+            }
+            .masthead h2 {
+                font-size: clamp(0.85rem, 2vw, 1rem);
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 400;
+                letter-spacing: 0.15em;
+                color: var(--accent) !important;
+                opacity: 0.9;
+            }
+            .masthead .badge-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+                margin: 1.5rem 0 2rem;
+            }
+            .masthead .badge-pill {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.7rem;
+                font-weight: 600;
+                padding: 0.35rem 0.85rem;
+                border-radius: 100px;
+                border: 1px solid rgba(255,255,255,0.15);
+                color: rgba(255,255,255,0.7);
+                background: rgba(255,255,255,0.04);
+                letter-spacing: 0.08em;
+            }
+            .btn-primary {
+                background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+                border: none !important;
+                font-family: 'Inter', sans-serif;
+                font-weight: 600;
+                font-size: 0.85rem;
+                letter-spacing: 0.08em;
+                padding: 0.65rem 1.8rem;
+                border-radius: 100px !important;
+                transition: opacity 0.2s, transform 0.2s !important;
+            }
+            .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+            .btn-dark {
+                background: rgba(255,255,255,0.08) !important;
+                border: 1px solid rgba(255,255,255,0.15) !important;
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                border-radius: 100px !important;
+                transition: background 0.2s !important;
+            }
+            .btn-dark:hover { background: rgba(255,255,255,0.14) !important; }
+            .btn-sm { padding: 0.45rem 1.2rem !important; font-size: 0.78rem !important; }
+
+            /* ── ABOUT ── */
+            .about-section {
+                background: linear-gradient(180deg, #0a0a14 0%, #0d0d1a 100%) !important;
+                padding: 7rem 0;
+            }
+            .about-section h2 {
+                font-size: 2rem;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+            }
+            .about-section p {
+                font-size: 1.05rem;
+                line-height: 1.85;
+                color: rgba(255,255,255,0.55) !important;
+            }
+            .about-section img {
+                border-radius: 16px;
+                opacity: 0.7;
+                margin-top: 3rem;
+            }
+
+            /* ── PROJECTS ── */
+            .projects-section { background: #0a0a12 !important; padding: 6rem 0; }
+            .projects-section .section-label {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 0.2em;
+                color: var(--accent);
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+            }
+            .projects-section h2 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #fff;
+                letter-spacing: -0.02em;
+                margin-bottom: 3.5rem;
+            }
+            .project-card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 20px;
+                overflow: hidden;
+                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+                margin-bottom: 1.5rem;
+            }
+            .project-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(0,212,255,0.25);
+                box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            }
+            .project-card img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                opacity: 0.75;
+                transition: opacity 0.3s;
+            }
+            .project-card:hover img { opacity: 0.9; }
+            .project-card-body {
+                padding: 1.75rem;
+            }
+            .project-card-body h4 {
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 0.6rem;
+                letter-spacing: -0.01em;
+            }
+            .project-card-body p {
+                font-size: 0.88rem;
+                line-height: 1.7;
+                color: rgba(255,255,255,0.5);
+                margin-bottom: 1.25rem;
+            }
+            .project-tag {
+                display: inline-block;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.65rem;
+                font-weight: 600;
+                padding: 0.2rem 0.6rem;
+                border-radius: 100px;
+                background: rgba(0,212,255,0.08);
+                border: 1px solid rgba(0,212,255,0.2);
+                color: var(--accent);
+                margin-right: 0.35rem;
+                margin-bottom: 0.75rem;
+                letter-spacing: 0.06em;
+            }
+
+            /* ── CERTS ── */
+            .certs-section {
+                background: linear-gradient(180deg, #0a0a12 0%, #0c0c18 100%);
+                padding: 7rem 0;
+            }
+            .certs-section .section-label {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 0.2em;
+                color: var(--accent2);
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+            }
+            .certs-section h2 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #fff;
+                letter-spacing: -0.02em;
+                margin-bottom: 3rem;
+            }
+            .cert-card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 16px;
+                padding: 1.75rem 1.5rem;
+                text-align: left;
+                transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                text-decoration: none !important;
+                display: block;
+            }
+            .cert-card::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 2px;
+            }
+            .cert-card.cka::before { background: linear-gradient(90deg, #326ce5, #00d4ff); }
+            .cert-card.cks::before { background: linear-gradient(90deg, #a855f7, #7b2fff); }
+            .cert-card.aws::before { background: linear-gradient(90deg, #ff9900, #ffcc00); }
+            .cert-card.dca::before { background: linear-gradient(90deg, #0db7ed, #0073e6); }
+            .cert-card.mcse::before { background: linear-gradient(90deg, #00a4ef, #7fba00); }
+            .cert-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(255,255,255,0.15);
+                box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+                text-decoration: none !important;
+            }
+            .cert-icon {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+                display: block;
+            }
+            .cert-card .cert-title {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 0.3rem;
+                display: block;
+            }
+            .cert-card .cert-subtitle {
+                font-size: 0.78rem;
+                color: rgba(255,255,255,0.45);
+                display: block;
+                line-height: 1.5;
+            }
+            .cert-card .cert-link {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.68rem;
+                color: var(--accent);
+                display: block;
+                margin-top: 1rem;
+                letter-spacing: 0.05em;
+                opacity: 0.8;
+            }
+            .cert-card.no-link .cert-link { display: none; }
+
+            /* ── SKILLS ── */
+            .skills-row {
+                margin-top: 3.5rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            .skill-tag {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.72rem;
+                font-weight: 500;
+                padding: 0.4rem 0.9rem;
+                border-radius: 100px;
+                border: 1px solid rgba(255,255,255,0.1);
+                color: rgba(255,255,255,0.55);
+                background: rgba(255,255,255,0.03);
+                letter-spacing: 0.06em;
+                transition: border-color 0.2s, color 0.2s;
+            }
+            .skill-tag:hover {
+                border-color: rgba(0,212,255,0.35);
+                color: var(--accent);
+            }
+
+            /* ── CONTACT ── */
+            .contact-section {
+                background: #07070f !important;
+                padding: 6rem 0;
+            }
+            .contact-card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 16px;
+                padding: 2rem;
+                text-align: center;
+                transition: border-color 0.25s;
+            }
+            .contact-card:hover { border-color: rgba(0,212,255,0.2); }
+            .contact-card .contact-icon {
+                font-size: 1.4rem;
+                background: linear-gradient(135deg, var(--accent), var(--accent2));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 0.75rem;
+            }
+            .contact-card h4 {
+                font-size: 0.7rem;
+                font-family: 'JetBrains Mono', monospace;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,0.4);
+                margin-bottom: 0.75rem;
+            }
+            .contact-card a, .contact-card div {
+                font-size: 0.9rem;
+                color: rgba(255,255,255,0.7);
+                text-decoration: none;
+            }
+            .social a {
+                color: rgba(255,255,255,0.4) !important;
+                font-size: 1.3rem;
+                transition: color 0.2s;
+            }
+            .social a:hover { color: var(--accent) !important; }
+
+            /* ── FOOTER ── */
+            footer {
+                background: #05050c !important;
+                padding: 1.5rem 0;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.72rem;
+                color: rgba(255,255,255,0.2) !important;
+                letter-spacing: 0.08em;
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+
+            /* ── DIVIDER LINE ── */
+            .section-divider {
+                width: 40px;
+                height: 2px;
+                background: linear-gradient(90deg, var(--accent), var(--accent2));
+                margin: 0 auto 1rem;
+                border-radius: 2px;
+            }
+        </style>
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Ofir Maoz</a>
+                <a class="navbar-brand" href="#page-top">ofir@maoz:~$</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#certs">Certifications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#certs">Certs</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://github.com/Rekt-Dev" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     </ul>
@@ -31,89 +402,91 @@
             </div>
         </nav>
 
+        <!-- HERO -->
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">Kubernetes &amp; Cloud Security Engineer</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">CKA &middot; CKS &middot; AWS &middot; DevSecOps &middot; Platform Engineering</h2>
+                    <h1 class="mx-auto my-0">Kubernetes &amp; Cloud<br>Security Engineer</h1>
+                    <h2 class="mx-auto mt-3 mb-4">CKA &nbsp;·&nbsp; CKS &nbsp;·&nbsp; AWS SAP-C02 &nbsp;·&nbsp; DevSecOps</h2>
+                    <div class="badge-row">
+                        <span class="badge-pill">Cluster Hardening</span>
+                        <span class="badge-pill">Platform Engineering</span>
+                        <span class="badge-pill">Supply Chain Security</span>
+                        <span class="badge-pill">IaC · Terraform</span>
+                        <span class="badge-pill">Tel Aviv</span>
+                    </div>
                     <a class="btn btn-primary" href="#about">About Me</a>
                 </div>
             </div>
         </header>
 
+        <!-- ABOUT -->
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
+                        <div class="section-divider"></div>
                         <h2 class="text-white mb-4">A bit about myself</h2>
-                        <p class="text-white-50">
-                            30 years in IT — from networks and infrastructure to Kubernetes security and cloud engineering.
-                            CKA and CKS certified, AWS solutions architect level, with deep hands-on experience in
-                            cluster hardening, DevSecOps pipelines, and offensive security.
+                        <p>
+                            25+ years in IT — from networks and Windows infrastructure to Kubernetes security and cloud engineering.
+                            CKA and CKS certified, AWS Solutions Architect Professional, with deep hands-on experience in
+                            cluster hardening, DevSecOps pipelines, supply chain security, and offensive security.
                             I build infrastructure that does not get pwned. Based in Tel Aviv.
                         </p>
                     </div>
                 </div>
-                <img class="img-fluid" src="./assets/img/demo-image-01.jpg" alt="infrastructure" />
+                <img class="img-fluid mt-5" src="./assets/img/demo-image-01.jpg" alt="infrastructure" style="border-radius:16px; max-height:420px; width:100%; object-fit:cover; opacity:0.6;" />
             </div>
         </section>
 
-        <section class="projects-section bg-light" id="projects">
+        <!-- PROJECTS -->
+        <section class="projects-section" id="projects">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="./assets/img/demo-02.jpeg" alt="cryptoSt8 dashboard" /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>cryptoSt8 v2</h4>
-                            <p class="text-black-50 mb-0">
-                                Real-time crypto market dashboard. React 19, Vite, CoinGecko API.
-                                Live Fear and Greed index, coin detail modals with 30-day charts, top movers, trending coins.
-                                Zero CSS frameworks, pure dark mode.
-                            </p>
-                            <br />
-                            <a href="https://invictus-crypto.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-                            &nbsp;
-                            <a href="https://github.com/Rekt-Dev/cryptoSt8-v2" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
-                        </div>
-                    </div>
+                <div class="text-center mb-2">
+                    <p class="section-label">Selected Work</p>
+                    <h2>Projects</h2>
                 </div>
-
-                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="./assets/img/demo-03.jpeg" alt="kubernetes" /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">k8s-cluster-bootstrap</h4>
-                                    <p class="mb-0 text-white-50">
-                                        IaC hub for standardized Kubernetes deployments.
-                                        Helm charts, admission controllers, encryption at rest, CIS benchmark hardening,
-                                        and shell automation for cluster lifecycle management.
-                                    </p>
-                                    <br />
-                                    <a href="https://github.com/Rekt-Dev/k8s-cluster-bootstrap" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                                    <hr class="d-none d-lg-block mb-0 ms-0" />
-                                </div>
+                <div class="row g-4">
+                    <!-- cryptoSt8 v2 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="project-card">
+                            <img src="./assets/img/demo-02.jpeg" alt="cryptoSt8 dashboard" />
+                            <div class="project-card-body">
+                                <span class="project-tag">React 19</span>
+                                <span class="project-tag">Vite</span>
+                                <span class="project-tag">CoinGecko API</span>
+                                <h4>cryptoSt8 v2</h4>
+                                <p>Real-time crypto market dashboard. Live Fear &amp; Greed index, coin detail modals with 30-day charts, top movers, trending coins. Zero CSS frameworks, pure dark mode.</p>
+                                <a href="https://invictus-crypto.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm me-2">Live Demo</a>
+                                <a href="https://github.com/Rekt-Dev/cryptoSt8-v2" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row gx-0 justify-content-center mt-5">
-                    <div class="col-lg-6"><img class="img-fluid" src="./assets/img/demo-05.jpg" alt="jacob skate shop" /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Jacob - Skate &amp; Streetwear</h4>
-                                    <p class="mb-0 text-white-50">
-                                        Full e-commerce UI in React 18 and TypeScript. Cart, routing, dark/light theme toggle,
-                                        search, user auth flows — 33 components, zero boilerplate UI libs.
-                                    </p>
-                                    <br />
-                                    <a href="https://github.com/Rekt-Dev/skate-shop-ecommerce" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                                    <hr class="d-none d-lg-block mb-0 me-0" />
-                                </div>
+                    <!-- k8s-cluster-bootstrap -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="project-card">
+                            <img src="./assets/img/demo-03.jpeg" alt="kubernetes cluster" />
+                            <div class="project-card-body">
+                                <span class="project-tag">Kubernetes</span>
+                                <span class="project-tag">Helm</span>
+                                <span class="project-tag">IaC</span>
+                                <h4>k8s-cluster-bootstrap</h4>
+                                <p>IaC hub for standardized Kubernetes deployments. Helm charts, admission controllers, encryption at rest, CIS benchmark hardening, and cluster lifecycle automation.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-cluster-bootstrap" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- skate-shop-ecommerce -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="project-card">
+                            <img src="./assets/img/demo-05.jpg" alt="skate shop" />
+                            <div class="project-card-body">
+                                <span class="project-tag">React 18</span>
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">E-Commerce</span>
+                                <h4>Skate Shop E-Commerce</h4>
+                                <p>Full e-commerce UI in React 18 and TypeScript. Cart, routing, dark/light theme toggle, search, user auth flows — 33 components, zero boilerplate UI libs.</p>
+                                <a href="https://github.com/Rekt-Dev/skate-shop-ecommerce" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -121,85 +494,118 @@
             </div>
         </section>
 
-        <section class="signup-section" id="certs">
+        <!-- CERTS & SKILLS -->
+        <section class="certs-section" id="certs">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-10 col-lg-8 mx-auto text-center">
-                        <i class="fas fa-certificate fa-2x mb-2 text-white"></i>
-                        <h2 class="text-white mb-5">Certifications &amp; Skills</h2>
-                        <div class="row text-white-50">
-                            <div class="col-md-6 mb-3">
-                                <a href="https://www.credly.com/badges/6eb98047-453a-4c59-b556-8b128f0040b7" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-                                <div class="card bg-dark border-secondary p-3 h-100" style="transition:border-color .2s;" onmouseover="this.style.borderColor='#0d6efd'" onmouseout="this.style.borderColor=''">
-                                    <h5 class="text-white">CKA</h5>
-                                    <p class="mb-0">Certified Kubernetes Administrator</p>
-                                    <small class="text-primary mt-2 d-block">View on Credly →</small>
-                                </div>
-                                </a>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <a href="https://www.credly.com/badges/dce5f489-7ae5-4bbb-bc85-d51490cbd810/public_url" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-                                <div class="card bg-dark border-secondary p-3 h-100" style="transition:border-color .2s;" onmouseover="this.style.borderColor='#0d6efd'" onmouseout="this.style.borderColor=''">
-                                    <h5 class="text-white">CKS</h5>
-                                    <p class="mb-0">Certified Kubernetes Security Specialist</p>
-                                    <small class="text-primary mt-2 d-block">View on Credly →</small>
-                                </div>
-                                </a>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="card bg-dark border-secondary p-3 h-100">
-                                    <h5 class="text-white">AWS SAP-C02</h5>
-                                    <p class="mb-0">Solutions Architect Professional</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="card bg-dark border-secondary p-3 h-100">
-                                    <h5 class="text-white">Docker DCA</h5>
-                                    <p class="mb-0">Docker Certified Associate</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-white-50 mt-4">Kubernetes &middot; Docker &middot; Terraform &middot; Helm &middot; AWS &middot; Linux &middot; DevSecOps &middot; React &middot; TypeScript &middot; Python &middot; Shell</p>
+                <div class="text-center mb-2">
+                    <p class="section-label">Verified Credentials</p>
+                    <h2>Certifications</h2>
+                </div>
+
+                <div class="row g-3 justify-content-center">
+                    <!-- CKA -->
+                    <div class="col-lg-4 col-md-6">
+                        <a class="cert-card cka" href="https://www.credly.com/badges/6eb98047-453a-4c59-b556-8b128f0040b7" target="_blank" rel="noopener noreferrer">
+                            <span class="cert-icon">⎈</span>
+                            <span class="cert-title">CKA</span>
+                            <span class="cert-subtitle">Certified Kubernetes Administrator<br>Cloud Native Computing Foundation</span>
+                            <span class="cert-link">View on Credly →</span>
+                        </a>
                     </div>
+                    <!-- CKS -->
+                    <div class="col-lg-4 col-md-6">
+                        <a class="cert-card cks" href="https://www.credly.com/badges/dce5f489-7ae5-4bbb-bc85-d51490cbd810/public_url" target="_blank" rel="noopener noreferrer">
+                            <span class="cert-icon">🔐</span>
+                            <span class="cert-title">CKS</span>
+                            <span class="cert-subtitle">Certified Kubernetes Security Specialist<br>Cloud Native Computing Foundation</span>
+                            <span class="cert-link">View on Credly →</span>
+                        </a>
+                    </div>
+                    <!-- AWS -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cert-card aws no-link">
+                            <span class="cert-icon">☁️</span>
+                            <span class="cert-title">AWS SAP-C02</span>
+                            <span class="cert-subtitle">Solutions Architect Professional<br>Amazon Web Services</span>
+                        </div>
+                    </div>
+                    <!-- Docker DCA -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cert-card dca no-link">
+                            <span class="cert-icon">🐳</span>
+                            <span class="cert-title">Docker DCA</span>
+                            <span class="cert-subtitle">Docker Certified Associate<br>Docker Inc.</span>
+                        </div>
+                    </div>
+                    <!-- MCSE -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cert-card mcse no-link">
+                            <span class="cert-icon">🪟</span>
+                            <span class="cert-title">MCSE</span>
+                            <span class="cert-subtitle">Microsoft Certified Systems Engineer<br>Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="skills-row">
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Helm</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Falco</span>
+                    <span class="skill-tag">OPA / Gatekeeper</span>
+                    <span class="skill-tag">Kyverno</span>
+                    <span class="skill-tag">Cosign</span>
+                    <span class="skill-tag">Trivy</span>
+                    <span class="skill-tag">etcd</span>
+                    <span class="skill-tag">Cilium</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Shell</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">DevSecOps</span>
                 </div>
             </div>
         </section>
 
-        <section class="contact-section bg-black" id="contact">
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-5 mb-3">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Location</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">Tel Aviv, Israel</div>
-                            </div>
+                <div class="text-center mb-5">
+                    <p class="section-label" style="color:var(--accent3);">Get In Touch</p>
+                    <h2 style="font-size:2.2rem;font-weight:800;color:#fff;letter-spacing:-0.02em;">Contact</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-md-4 mb-3">
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <h4>Location</h4>
+                            <div>Tel Aviv, Israel</div>
                         </div>
                     </div>
-                    <div class="col-md-5 mb-3">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Email</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="mailto:rektdevvv@gmail.com">rektdevvv@gmail.com</a></div>
-                            </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <h4>Email</h4>
+                            <a href="mailto:rektdevvv@gmail.com">rektdevvv@gmail.com</a>
                         </div>
                     </div>
                 </div>
-                <div class="social d-flex justify-content-center mt-4">
-                    <a class="mx-2" href="https://github.com/Rekt-Dev" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-2x"></i></a>
-                    <a class="mx-2" href="https://wa.me/972585020757" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp fa-2x"></i></a>
-                    <a class="mx-2" href="mailto:rektdevvv@gmail.com"><i class="fas fa-envelope fa-2x"></i></a>
+                <div class="social d-flex justify-content-center gap-4 mt-2">
+                    <a href="https://github.com/Rekt-Dev" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/972585020757" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:rektdevvv@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </section>
 
-        <footer class="footer bg-black small text-center text-white-50">
-            <div class="container px-4 px-lg-5">
-                Ofir Maoz &middot; Invictus Crypto Strategies &middot; 2026
+        <footer>
+            <div class="container px-4 px-lg-5 text-center">
+                Ofir Maoz &nbsp;·&nbsp; 2026
             </div>
         </footer>
 
