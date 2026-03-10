@@ -68,11 +68,15 @@
                 font-size: clamp(2rem, 5vw, 3.5rem);
                 font-weight: 900;
                 letter-spacing: -0.02em;
+                color: #fff;
                 background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 text-transform: none !important;
                 line-height: 1.1;
+            }
+            @supports not (-webkit-background-clip: text) {
+                .masthead h1 { color: #fff !important; }
             }
             .masthead h2 {
                 font-size: clamp(0.85rem, 2vw, 1rem);
@@ -463,17 +467,17 @@
                             </div>
                         </div>
                     </div>
-                    <!-- wikimedia-analytics -->
+                    <!-- bybit-trading-dashboard -->
                     <div class="col-lg-4 col-md-6">
                         <div class="project-card">
-                            <img src="./assets/img/demo-03.jpeg" alt="data streaming platform" />
+                            <img src="./assets/img/demo-03.jpeg" alt="trading dashboard" />
                             <div class="project-card-body">
-                                <span class="project-tag">Kafka</span>
-                                <span class="project-tag">Spark</span>
-                                <span class="project-tag">IaC</span>
-                                <h4>Wikimedia Analytics Platform</h4>
-                                <p>End-to-end real-time data streaming and observability platform. Kafka ingestion, Spark processing, Elasticsearch indexing, and Kibana dashboards — fully automated with IaC.</p>
-                                <a href="https://github.com/Rekt-Dev/wikimedia-analytics" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">Bybit API</span>
+                                <h4>Bybit Trading Dashboard</h4>
+                                <p>Real-time cryptocurrency trading interface. Multi-order management, live portfolio tracking, authenticated session handling, and order book visualization via Bybit REST API.</p>
+                                <a href="https://github.com/Rekt-Dev/bybit-trading-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -544,7 +548,7 @@
                             <span class="cert-icon">🪟</span>
                             <span class="cert-title">MCSE · MCP+I</span>
                             <span class="cert-subtitle">Microsoft Certified Systems Engineer: Windows NT 4.0<br>Microsoft Certified Professional + Internet<br>Microsoft · 2000</span>
-                            <span class="cert-link">View on Microsoft Learn →</span>
+                            <span class="cert-link">View credentials on Microsoft Learn →</span>
                         </a>
                     </div>
                     <!-- MS Network Design -->
@@ -553,7 +557,7 @@
                             <span class="cert-icon">🌐</span>
                             <span class="cert-title">MS Network Design</span>
                             <span class="cert-subtitle">Designing, Deploying and Managing a Network Solution for the Small and Medium-sized Business<br>Microsoft · 2006</span>
-                            <span class="cert-link">View on Microsoft Learn →</span>
+                            <span class="cert-link">View credentials on Microsoft Learn →</span>
                         </a>
                     </div>
                     <!-- MS IIS -->
@@ -562,7 +566,7 @@
                             <span class="cert-icon">🖥️</span>
                             <span class="cert-title">MS IIS 4.0</span>
                             <span class="cert-subtitle">Implementing and Supporting Microsoft Internet Information Server 4.0<br>Microsoft · 2000</span>
-                            <span class="cert-link">View on Microsoft Learn →</span>
+                            <span class="cert-link">View credentials on Microsoft Learn →</span>
                         </a>
                     </div>
                     <!-- Linux Administration -->
