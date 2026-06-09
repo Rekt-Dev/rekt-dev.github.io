@@ -375,6 +375,70 @@
                 border-top: 1px solid rgba(255,255,255,0.05);
             }
 
+            /* ── INFRA CARDS ── */
+            .infra-card {
+                background: rgba(255,255,255,0.025);
+                border: 1px solid rgba(255,255,255,0.07);
+                border-radius: 20px;
+                overflow: hidden;
+                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+                margin-bottom: 1.5rem;
+                border-top: 2px solid var(--card-accent);
+            }
+            .infra-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--card-accent);
+                box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--card-accent, rgba(0,212,255,0.15));
+            }
+            .infra-terminal {
+                background: #0b0b14;
+                padding: 1.1rem 1.25rem 0.9rem;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                min-height: 130px;
+            }
+            .terminal-bar {
+                display: flex;
+                gap: 5px;
+                margin-bottom: 0.65rem;
+            }
+            .terminal-bar span {
+                width: 10px; height: 10px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.12);
+            }
+            .terminal-bar span:nth-child(1) { background: #ff5f57; }
+            .terminal-bar span:nth-child(2) { background: #febc2e; }
+            .terminal-bar span:nth-child(3) { background: #28c840; }
+            .infra-terminal pre {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.72rem;
+                line-height: 1.65;
+                color: rgba(255,255,255,0.6);
+                margin: 0;
+                white-space: pre;
+                overflow: hidden;
+            }
+            .t-cmd  { color: #ffffff; }
+            .t-ok   { color: #4ade80; }
+            .t-warn { color: #fbbf24; }
+            .t-dim  { color: rgba(255,255,255,0.35); }
+            .infra-body {
+                padding: 1.5rem 1.75rem 1.75rem;
+            }
+            .infra-body h4 {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #fff;
+                margin: 0.5rem 0 0.55rem;
+                letter-spacing: -0.01em;
+            }
+            .infra-body p {
+                font-size: 0.86rem;
+                line-height: 1.7;
+                color: rgba(255,255,255,0.48);
+                margin-bottom: 1.1rem;
+            }
+
             /* ── DIVIDER LINE ── */
             .section-divider {
                 width: 40px;
@@ -397,7 +461,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Platform</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#apps">Apps</a></li>
                         <li class="nav-item"><a class="nav-link" href="#certs">Certs</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://github.com/Rekt-Dev" target="_blank" rel="noopener noreferrer">GitHub</a></li>
@@ -443,12 +508,166 @@
             </div>
         </section>
 
-        <!-- PROJECTS -->
-        <section class="projects-section" id="projects">
+        <!-- PLATFORM ENGINEERING -->
+        <section class="projects-section" id="projects" style="background:#08080f; padding-bottom:2rem;">
             <div class="container px-4 px-lg-5">
                 <div class="text-center mb-2">
-                    <p class="section-label">Selected Work</p>
-                    <h2>Projects</h2>
+                    <p class="section-label">Infrastructure &amp; Security</p>
+                    <h2>Platform Engineering</h2>
+                    <p style="color:rgba(255,255,255,0.38);font-size:0.88rem;margin-top:-1.5rem;margin-bottom:3rem;font-family:'JetBrains Mono',monospace;">3-node kubeadm cluster &nbsp;·&nbsp; Calico CNI &nbsp;·&nbsp; containerd &nbsp;·&nbsp; k8s v1.35</p>
+                </div>
+                <div class="row g-4">
+
+                    <!-- k8s-production-patterns -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#326ce5;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">kubectl get pods -n production</span>
+<span class="t-ok">web-7d9f8b-xk2p   1/1   Running</span>
+<span class="t-ok">api-6c8df9-m3nw   1/1   Running</span>
+<span class="t-dim">HPA  min:2  max:10  cpu:42%</span>
+<span class="t-dim">PDB  minAvailable: 1</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Kubernetes</span><span class="project-tag">Helm</span><span class="project-tag">HPA</span><span class="project-tag">PDB</span></div>
+                                <h4>K8s Production Patterns</h4>
+                                <p>Production-grade manifests — default-deny NetworkPolicy, least-privilege RBAC, zero-downtime RollingUpdate, HPA with scale-down stabilization, PDB, and a full Helm chart.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-production-patterns" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- k8s-security-hardening -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#a855f7;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">kubectl get networkpolicies -A</span>
+<span class="t-warn">default    default-deny-all</span>
+<span class="t-ok">default    allow-dns-egress</span>
+<span class="t-ok">production allow-ingress-nginx</span>
+<span class="t-dim">PSA: restricted · audit: on</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">CKS</span><span class="project-tag">NetworkPolicy</span><span class="project-tag">RBAC</span><span class="project-tag">seccomp</span></div>
+                                <h4>K8s Security Hardening</h4>
+                                <p>Zero-trust network segmentation, least-privilege RBAC, Pod Security Admission, API server audit policy, and custom seccomp profiles — all on a physical kubeadm cluster.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-security-hardening" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- k8s-observability-stack -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#f59e0b;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">kubectl get prometheusrule -n monitoring</span>
+<span class="t-ok">homelab-custom-alerts   Active</span>
+<span class="t-dim">NodeMemoryPressureHigh</span>
+<span class="t-dim">EtcdHighCommitDuration</span>
+<span class="t-dim">PodCrashLooping</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Prometheus</span><span class="project-tag">Grafana</span><span class="project-tag">Alertmanager</span></div>
+                                <h4>K8s Observability Stack</h4>
+                                <p>kube-prometheus-stack tuned for a RAM-constrained homelab — custom PrometheusRule CRDs for node, etcd, and pod-lifecycle alerts. Alertmanager routing with push notifications.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-observability-stack" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- gitops-argocd-homelab -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#00ff9d;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">argocd app list</span>
+<span class="t-ok">app-of-apps        Synced  Healthy</span>
+<span class="t-ok">production-workloads Synced  Healthy</span>
+<span class="t-ok">monitoring-stack   Synced  Healthy</span>
+<span class="t-dim">selfHeal: on  prune: on</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">ArgoCD</span><span class="project-tag">GitOps</span><span class="project-tag">App of Apps</span></div>
+                                <h4>GitOps — ArgoCD Homelab</h4>
+                                <p>Full GitOps setup using App of Apps. AppProject with source/destination restrictions, per-application selfHeal policies, ArgoCD RBAC mapped to identity provider groups.</p>
+                                <a href="https://github.com/Rekt-Dev/gitops-argocd-homelab" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- terraform-aws-eks-secure -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#7b42bc;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">terraform plan -out=eks.tfplan</span>
+<span class="t-ok">+ aws_eks_cluster.main</span>
+<span class="t-dim">  endpoint_public_access  = false</span>
+<span class="t-dim">  kms_key_id = alias/eks-key</span>
+<span class="t-dim">  http_tokens = "required" # IMDSv2</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Terraform</span><span class="project-tag">AWS EKS</span><span class="project-tag">IRSA</span><span class="project-tag">KMS</span></div>
+                                <h4>Terraform AWS EKS Secure</h4>
+                                <p>Modular Terraform for a hardened EKS cluster — private API endpoint, KMS secrets encryption, IMDSv2 enforced, IRSA for pod-level IAM, S3 + DynamoDB remote state.</p>
+                                <a href="https://github.com/Rekt-Dev/terraform-aws-eks-secure" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- k8s-incident-response -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#ef4444;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">./etcd/backup.sh</span>
+<span class="t-ok">Snapshot saved: etcd-20260519.db</span>
+<span class="t-ok">Verified: hash OK  size: 4.2MB</span>
+<span class="t-dim">$ </span><span class="t-cmd">./rbac-audit/find-clusteradmin.sh</span>
+<span class="t-warn">2 bindings found — review needed</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Falco</span><span class="project-tag">etcd</span><span class="project-tag">Runbooks</span><span class="project-tag">CKS</span></div>
+                                <h4>K8s Incident Response</h4>
+                                <p>Operational runbooks for a live cluster — etcd backup/restore, certificate expiry checks, node isolation scripts, Falco alert triage playbook, and RBAC overprivilege auditing.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-incident-response" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- k8s-networking-deepdive — centred on last row -->
+                    <div class="col-lg-4 col-md-6 offset-lg-2">
+                        <div class="infra-card" style="--card-accent:#00d4ff;">
+                            <div class="infra-terminal">
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">ip link show vxlan.calico</span>
+<span class="t-ok">vxlan.calico: mtu 1450 UP</span>
+<span class="t-dim"># Cilium tested — OOM killed host</span>
+<span class="t-dim"># reverted to Calico VXLAN</span>
+<span class="t-dim">podCIDR: 10.244.0.0/16</span></pre>
+                            </div>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Calico</span><span class="project-tag">CNI</span><span class="project-tag">CoreDNS</span><span class="project-tag">eBPF</span></div>
+                                <h4>K8s Networking Deep Dive</h4>
+                                <p>Calico VXLAN config, multi-tier NetworkPolicies, CoreDNS customization, ingress-nginx on bare metal. Honest post-mortem on a Cilium migration attempt that OOMed the control plane.</p>
+                                <a href="https://github.com/Rekt-Dev/k8s-networking-deepdive" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- APPS -->
+        <section class="projects-section" id="apps" style="background:#0a0a12; padding-top:5rem;">
+            <div class="container px-4 px-lg-5">
+                <div class="text-center mb-2">
+                    <p class="section-label" style="color:var(--accent2);">Frontend &amp; Apps</p>
+                    <h2>Applications</h2>
                 </div>
                 <div class="row g-4">
                     <!-- cryptoSt8 v2 -->
@@ -494,20 +713,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- k8s-production-patterns -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="K8s Production Patterns" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Kubernetes</span>
-                                <span class="project-tag">Helm</span>
-                                <span class="project-tag">CKA/CKS</span>
-                                <h4>K8s Production Patterns</h4>
-                                <p>Production-grade Kubernetes manifests — default-deny NetworkPolicy, least-privilege RBAC, zero-downtime RollingUpdate, HPA with scale-down stabilization, PDB, and a full Helm chart.</p>
-                                <a href="https://github.com/Rekt-Dev/k8s-production-patterns" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
                     <!-- macro-tracker-v2 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="project-card">
@@ -535,100 +740,6 @@
                                 <p>Gym session tracker with real-time Supabase sync, rest timer with push notifications, execution mode tracking (strict/controlled/momentum), CSV + JPEG session export.</p>
                                 <a href="https://iron-dome-v2.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm me-2">Live Demo</a>
                                 <a href="https://github.com/Rekt-Dev/iron-dome-v2" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- k8s-security-hardening -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="K8s Security Hardening" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Kubernetes</span>
-                                <span class="project-tag">CKS</span>
-                                <span class="project-tag">NetworkPolicy</span>
-                                <span class="project-tag">RBAC</span>
-                                <h4>K8s Security Hardening</h4>
-                                <p>Zero-trust network segmentation, least-privilege RBAC, Pod Security Admission, API server audit policy, and custom seccomp profiles on a physical kubeadm cluster.</p>
-                                <a href="https://github.com/Rekt-Dev/k8s-security-hardening" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- k8s-observability-stack -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="K8s Observability Stack" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Prometheus</span>
-                                <span class="project-tag">Grafana</span>
-                                <span class="project-tag">Alertmanager</span>
-                                <h4>K8s Observability Stack</h4>
-                                <p>kube-prometheus-stack tuned for a 3-node homelab — custom PrometheusRule alerts for node health, etcd latency, and pod lifecycle. Alertmanager routing with push notifications.</p>
-                                <a href="https://github.com/Rekt-Dev/k8s-observability-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- gitops-argocd-homelab -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="GitOps ArgoCD Homelab" />
-                            <div class="project-card-body">
-                                <span class="project-tag">ArgoCD</span>
-                                <span class="project-tag">GitOps</span>
-                                <span class="project-tag">App of Apps</span>
-                                <h4>GitOps — ArgoCD Homelab</h4>
-                                <p>Full GitOps implementation using the App of Apps pattern. AppProject with source/destination restrictions, selfHeal policies per workload, ArgoCD RBAC mapped to team groups.</p>
-                                <a href="https://github.com/Rekt-Dev/gitops-argocd-homelab" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- terraform-aws-eks-secure -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="Terraform AWS EKS Secure" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Terraform</span>
-                                <span class="project-tag">AWS EKS</span>
-                                <span class="project-tag">IRSA</span>
-                                <span class="project-tag">KMS</span>
-                                <h4>Terraform AWS EKS Secure</h4>
-                                <p>Modular Terraform for a hardened EKS cluster — private API endpoint, KMS secrets encryption, IMDSv2 enforced on node groups, IRSA for pod-level IAM, S3 remote state with locking.</p>
-                                <a href="https://github.com/Rekt-Dev/terraform-aws-eks-secure" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- k8s-incident-response -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="K8s Incident Response" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Falco</span>
-                                <span class="project-tag">etcd</span>
-                                <span class="project-tag">CKS</span>
-                                <span class="project-tag">Runbooks</span>
-                                <h4>K8s Incident Response</h4>
-                                <p>Operational runbooks for a live cluster — etcd backup/restore scripts, certificate expiry checks, node isolation with network policy, Falco alert triage playbook, RBAC audit scripts.</p>
-                                <a href="https://github.com/Rekt-Dev/k8s-incident-response" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- k8s-networking-deepdive -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-card">
-                            <img src="./assets/img/project-k8s.jpg" alt="K8s Networking Deep Dive" />
-                            <div class="project-card-body">
-                                <span class="project-tag">Calico</span>
-                                <span class="project-tag">CNI</span>
-                                <span class="project-tag">CoreDNS</span>
-                                <span class="project-tag">eBPF</span>
-                                <h4>K8s Networking Deep Dive</h4>
-                                <p>Calico VXLAN config, multi-tier NetworkPolicies, CoreDNS customization, and ingress-nginx on bare metal. Includes a documented Cilium migration attempt — eBPF OOMed the host, reverted to Calico.</p>
-                                <a href="https://github.com/Rekt-Dev/k8s-networking-deepdive" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a>
                             </div>
                         </div>
                     </div>
