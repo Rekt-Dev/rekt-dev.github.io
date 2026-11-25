@@ -1012,13 +1012,9 @@
 
                         <p>
 
-                            Over the years I founded and ran several IT businesses &mdash; winning clients and delivering enterprise infrastructure for organizations of 200&ndash;1,000+ users.
-
-                            I built and led the technical teams behind that work: hiring, interviewing, and mentoring engineers, directing sysadmins at client sites across several countries, and reporting directly to C-level &mdash; all while staying hands-on in the systems myself.
-
-                            Across ~30 years I've worked at a strong level as both a Windows systems administrator and a Linux engineer &mdash; server estates, networks, virtualization (VMware ESXi) &mdash; and moved into containerization, platform engineering, Kubernetes, cloud, and DevSecOps.
-
-                            CKA and CKS certified, AWS Solutions Architect &ndash; Professional (in progress). Based in Tel Aviv.
+                            Nearly 30 years in infrastructure and systems engineering. I started as a systems administrator and grew through engineering, consulting and technical-lead roles at IT firms, later founding my own consultancy and a fintech operation.
+                            Across both paths I've delivered enterprise Windows and Linux estates for organizations of 200&ndash;1,000+ users &mdash; Active Directory, networks, VMware ESXi virtualization, backup and disaster recovery &mdash; led teams of 3 to 7 engineers, directed sysadmins at client sites in several countries, and worked directly with C-level stakeholders, while staying hands-on in the systems myself.
+                            Today my work spans infrastructure architecture, cloud, security and containerization, built on that Windows, Linux and virtualization foundation. CKA and CKS certified, AWS Solutions Architect &ndash; Professional (in progress). Based in Tel Aviv.
 
                         </p>
 
@@ -1161,6 +1157,120 @@
                                 <p>kube-prometheus-stack tuned for a RAM-constrained homelab &mdash; custom PrometheusRule CRDs for node, etcd, and pod-lifecycle alerts. Alertmanager routing with push notifications.</p>
 
                                 <a href="https://github.com/Rekt-Dev/k8s-observability-stack" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- self-hosted-ai-assistant -->
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="infra-card" style="--card-accent:#a78bfa;">
+
+                            <div class="infra-terminal">
+
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">ollama ps</span>
+
+<span class="t-ok">qwen3:30b-a3b      loaded</span>
+
+<span class="t-ok">gpt-oss:20b        available</span>
+
+<span class="t-dim">tailscale serve: https, tailnet only</span></pre>
+
+                            </div>
+
+                            <div class="infra-body">
+
+                                <div><span class="project-tag">Ollama</span><span class="project-tag">Open WebUI</span><span class="project-tag">Tailscale</span><span class="project-tag">Function Calling</span></div>
+
+                                <h4>Self-Hosted AI Assistant Platform</h4>
+
+                                <p>A private AI assistant on infrastructure I control. Qwen3-30B-A3B and gpt-oss-20b served through Ollama behind Open WebUI, with voice chat (Whisper STT, neural TTS), phone access, and reachability only over a Tailscale mesh with HTTPS. Function-calling tools cover web search and page reading, browser automation for web-based applications, workspace files, mailbox integration (read, reply, compose; sending gated by approval) and code generation, debugging and review. Approval prompts on every state-changing action, a domain blocklist, secrets kept out of backups, and versioned configuration backups with documented rollback. Web-grounded query latency cut from ~6 min to under 1 min by capping tool output, trimming context and pre-warming models.</p>
+                                <div class="mt-3"><a href="https://github.com/Rekt-Dev/self-hosted-ai-assistant" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- web-platform-infra -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#34d399;">
+                            <a href="./assets/img/project-web-platform.jpg" target="_blank" rel="noopener"><img class="project-card-img" src="./assets/img/project-web-platform.jpg" alt="Host metrics dashboard" loading="lazy" style="width:100%;height:190px;object-fit:cover;object-position:top left;"></a>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Apache</span><span class="project-tag">Tomcat</span><span class="project-tag">Prometheus</span><span class="project-tag">Grafana</span></div>
+                                <h4>Web Platform Infrastructure</h4>
+                                <p>Apache, Tomcat, PHP, Jenkins and WebSphere Liberty on Hyper-V behind a hardened cloud edge proxy reached over a restricted reverse SSH tunnel, with PostgreSQL access rules, Prometheus alerting and a runbook.</p>
+                                <div class="mt-3"><a href="https://github.com/Rekt-Dev/web-platform-infra" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- java-rolling-deploy -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#fbbf24;">
+                            <a href="./assets/img/project-rolling-deploy.jpg" target="_blank" rel="noopener"><img class="project-card-img" src="./assets/img/project-rolling-deploy.jpg" alt="Load balancer member status" loading="lazy" style="width:100%;height:190px;object-fit:cover;object-position:top left;"></a>
+                            <div class="infra-body">
+                                <div><span class="project-tag">Jenkins</span><span class="project-tag">Tomcat</span><span class="project-tag">Load Balancing</span><span class="project-tag">PostgreSQL</span></div>
+                                <h4>Java Rolling Deployment</h4>
+                                <p>A Java servlet application on two Tomcat nodes behind an Apache load balancer with sticky sessions and active health checks. The Jenkins pipeline deploys one node at a time and rolls back on failure.</p>
+                                <div class="mt-3"><a href="https://github.com/Rekt-Dev/java-rolling-deploy" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- windows-hw-monitoring -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="infra-card" style="--card-accent:#f87171;">
+                            <a href="./assets/img/project-hw-monitoring.jpg" target="_blank" rel="noopener"><img class="project-card-img" src="./assets/img/project-hw-monitoring.jpg" alt="CPU thermal dashboard" loading="lazy" style="width:100%;height:190px;object-fit:cover;object-position:top left;"></a>
+                            <div class="infra-body">
+                                <div><span class="project-tag">PowerShell</span><span class="project-tag">Prometheus</span><span class="project-tag">Grafana</span><span class="project-tag">Windows</span></div>
+                                <h4>Windows Hardware Telemetry</h4>
+                                <p>CPU temperature, load and clock speed from Core Temp shared memory through the windows_exporter textfile collector into Prometheus and Grafana, with load generation and run comparison tools.</p>
+                                <div class="mt-3"><a href="https://github.com/Rekt-Dev/windows-hw-monitoring" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- hyperv-ubuntu-k3s-dr-lab -->
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="infra-card" style="--card-accent:#38bdf8;">
+
+                            <div class="infra-terminal">
+
+                                <div class="terminal-bar"><span></span><span></span><span></span></div>
+
+                                <pre><span class="t-dim">$ </span><span class="t-cmd">kubectl get nodes</span>
+
+<span class="t-ok">k3s-lab   Ready   control-plane,master</span>
+
+<span class="t-dim">dr-vm    restore target (kit verified)</span>
+
+<span class="t-dim">autoinstall: seed ISO, unattended</span></pre>
+
+                            </div>
+
+                            <div class="infra-body">
+
+                                <div><span class="project-tag">Hyper-V</span><span class="project-tag">k3s</span><span class="project-tag">Autoinstall</span><span class="project-tag">Disaster Recovery</span></div>
+
+                                <h4>Hyper-V k3s Node &amp; DR Restore Target</h4>
+
+                                <p>Hyper-V VMs provisioned unattended with Ubuntu 22.04 autoinstall (NoCloud seed ISO built through IMAPI2FS, installer prompt confirmed over the Hyper-V WMI keyboard). A single-node k3s cluster plus a blank restore target into which an encrypted production backup kit, including the Postgres dump, is restored to prove recoverability. Key-only SSH through the host as a jump, NAT networking, PowerShell tooling and a runbook.</p>
+
+                                <a href="https://github.com/Rekt-Dev/hyperv-ubuntu-k3s-dr-lab" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">GitHub</a>
 
                             </div>
 
@@ -1494,7 +1604,7 @@
 
                             <span class="cert-subtitle">Certified Kubernetes Administrator<br>Cloud Native Computing Foundation</span>
 
-                            <span class="cert-link">View on Credly â†’</span>
+                            <span class="cert-link">View on Credly &rarr;</span>
 
                         </a>
 
@@ -1511,7 +1621,7 @@
 
                             <span class="cert-subtitle">Certified Kubernetes Security Specialist<br>Cloud Native Computing Foundation</span>
 
-                            <span class="cert-link">View on Credly â†’</span>
+                            <span class="cert-link">View on Credly &rarr;</span>
 
                         </a>
 
@@ -1542,7 +1652,7 @@
 
                             <span class="cert-subtitle">Microsoft Certified Systems Engineer: Windows Server<br>Microsoft Certified Professional + Internet<br>Microsoft &middot; 2000</span>
 
-                            <span class="cert-link">View credentials on Microsoft Learn â†’</span>
+                            <span class="cert-link">View credentials on Microsoft Learn &rarr;</span>
 
                         </a>
 
@@ -1558,7 +1668,7 @@
 
                             <span class="cert-subtitle">Designing, Deploying and Managing Enterprise Network Solutions<br>Microsoft &middot; 2006</span>
 
-                            <span class="cert-link">View credentials on Microsoft Learn â†’</span>
+                            <span class="cert-link">View credentials on Microsoft Learn &rarr;</span>
 
                         </a>
 
@@ -1574,7 +1684,7 @@
 
                             <span class="cert-subtitle">Implementing and Supporting Microsoft Internet Information Server<br>Microsoft &middot; 2000</span>
 
-                            <span class="cert-link">View credentials on Microsoft Learn â†’</span>
+                            <span class="cert-link">View credentials on Microsoft Learn &rarr;</span>
 
                         </a>
 
